@@ -7,7 +7,7 @@ setup(
     description='Python Convert HTML Document to JSON',
     author='Behzad Mehrabi',
     author_email='bezMehrabi@gmail.com',
-    url='https://www.python.org/sigs/distutils-sig/',
+    url='https://github.com/Bezmehrabi/tojson.git',
     license='LICENSE.txt',
     install_requires=[
         'bs4 >= 0.0.1',
