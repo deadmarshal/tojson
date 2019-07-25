@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from nested_lookup import nested_lookup
 
 
-def _gen_dict_extract(var):
+def _gen_extract(var):
     '''iterate over nested dict,
     yield tuple of each tag and its value'''
     for tag, value in var.items():
@@ -15,11 +15,11 @@ def _gen_dict_extract(var):
             continue
         yield (tag, value)
         if isinstance(value, dict):
-            for result in _gen_dict_extract(value):
+            for result in _gen_extract(value):
                 yield result
         elif isinstance(value, list):
             for d in value:
-                for result in _gen_dict_extract(d):
+                for result in _gen_extract(d):
                     yield result
 
 
@@ -97,7 +97,7 @@ class HTML:
         return self._dict[tag]
 
     def __iter__(self):
-        return _gen_dict_extract(self._dict)
+        return _gen_extract(self._dict)
 
     def __eq__(self, other):
         if self._dict == other._dict:
