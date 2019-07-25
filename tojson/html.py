@@ -15,11 +15,11 @@ def _gen_dict_extract(var):
             continue
         yield (tag, value)
         if isinstance(value, dict):
-            for result in gen_dict_extract(value):
+            for result in _gen_dict_extract(value):
                 yield result
         elif isinstance(value, list):
             for d in value:
-                for result in gen_dict_extract(d):
+                for result in _gen_dict_extract(d):
                     yield result
 
 
